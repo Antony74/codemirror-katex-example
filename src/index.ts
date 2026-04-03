@@ -1,6 +1,7 @@
 import { basicSetup } from 'codemirror';
 import { EditorView } from '@codemirror/view';
 import { latex } from 'codemirror-lang-latex';
+import katex from 'katex';
 
 const editor = document.getElementById('editor');
 
@@ -10,9 +11,32 @@ if (!editor) {
 
 const view = new EditorView({
     doc: editor.textContent,
-    extensions: [basicSetup, latex()],
-    parent: document.body,
+    extensions: [
+        basicSetup,
+        latex(),
+        EditorView.updateListener.of((view) => {
+            if (view.docChanged) {
+                onchange();
+            }
+        }),
+    ],
+    parent: document.getElementById('editor-container')!,
 });
 
 editor.remove();
 view.dom.id = 'editor';
+
+const onchange = () => {
+    const preview = katex.renderToString(view.state.doc.toString(), {
+        throwOnError: false,
+        displayMode: true,
+        macros: {
+            '\\f': '#1f(#2)',
+        },
+        output: 'html',
+    });
+
+    document.getElementById('preview')!.innerHTML = preview;
+};
+
+onchange();
