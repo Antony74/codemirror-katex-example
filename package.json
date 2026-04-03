@@ -26,5 +26,9 @@
     "prettier": {
         "tabWidth": 4,
         "singleQuote": true
+    },
+    "dependencies": {
+        "codemirror": "^6.0.2",
+        "codemirror-lang-latex": "^0.2.0"
     }
 }
