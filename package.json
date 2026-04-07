@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "start": "rimraf dist && esbuild src/index.ts --bundle --outfile=dist/index.js && copyfiles --flat src/index.html src/styles.css node_modules/katex/dist/katex.min.css dist && http-server dist"
+        "start": "rimraf dist && esbuild src/index.ts --bundle --outfile=dist/index.js && ./copyfiles.sh && http-server dist"
     },
     "repository": {
         "type": "git",
