@@ -31,6 +31,7 @@
     "dependencies": {
         "codemirror": "^6.0.2",
         "codemirror-lang-latex": "^0.2.0",
+        "github-fork-ribbon-css": "^0.2.3",
         "katex": "^0.16.44"
     }
 }
