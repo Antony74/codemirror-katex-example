@@ -8,7 +8,26 @@
         <link rel="stylesheet" href="katex.min.css" />
     </head>
     <body>
-        <h1>Editor</h1>
+        <h1>CodeMirror KaTeX Example</h1>
+        <p>
+            This page shows CodeMiror with LaTeX syntax highlighting and a
+            preview rendered with KaTeX.
+        </p>
+        <p>
+            With JavaScript switched on in your browser the rendered notation
+            updates as you edit.
+        </p>
+        <p>
+            With JavaScript switched off we find a similar textarea instead of
+            the CodeMirror element, and the notation is not rendered
+            dynamically, but could be rendered on the server side, as shown by
+            the hardcoded rendering provided here.
+        </p>
+        <p>
+            This is vanilla JavaScript.  Packages such as @uiw/react-codemirror 
+            can help CodeMirror be integrated into a framework tidily.
+        </p>
+        <h2>Editor</h2>
         <div id="editor-container">
             <textarea id="editor">
 \f\relax{x} = \int_{-\infty}^\infty
@@ -17,7 +36,7 @@
         </textarea
             >
         </div>
-        <h1>Preview</h1>
+        <h2>Preview</h2>
         <div id="preview">
             <span class="katex-display"
                 ><span class="katex"
