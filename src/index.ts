@@ -27,16 +27,21 @@ editor.remove();
 view.dom.id = 'editor';
 
 const onchange = () => {
-    const preview = katex.renderToString(view.state.doc.toString(), {
-        throwOnError: false,
-        displayMode: true,
-        macros: {
-            '\\f': '#1f(#2)',
-        },
-        output: 'html',
-    });
+    try {
+        const preview = katex.renderToString(view.state.doc.toString(), {
+            displayMode: true,
+            macros: {
+                '\\f': '#1f(#2)',
+            },
+            output: 'html',
+        });
 
-    document.getElementById('preview')!.innerHTML = preview;
+        document.getElementById('preview')!.innerHTML = preview;
+    } catch (e) {
+        if (e instanceof Error) {
+            document.getElementById('preview')!.innerHTML = e.message;
+        }
+    }
 };
 
 onchange();
